@@ -4,7 +4,7 @@ import Layout from '../components/layout'
 const AboutPage = () => {
     return (
         <Layout pageTitle="About">
-            <p>Thoughts and analysis for the depraved.</p>
+            <p>Thoughts and analysis for the deranged.</p>
         </Layout>
     )
 }
