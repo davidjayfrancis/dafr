@@ -1,6 +1,6 @@
 import * as React from "react"
-import Layout from '../components/layout'
-import Seo from '../components/seo'
+import Layout from '../../components/layout'
+import Seo from '../../components/seo'
 import { graphql, Link } from 'gatsby'
 
 const EssaysPage = ({ data }) => {
@@ -9,7 +9,11 @@ const EssaysPage = ({ data }) => {
             {
                 data.allMdx.nodes.map((node) => (
                     <article key={node.id}>
-                        <Link to={"/" + node.frontmatter.slug}><h2>{node.frontmatter.title}</h2></Link>
+                        <h2>
+                            <Link to={"/essays/" + node.frontmatter.slug}>
+                                {node.frontmatter.title}
+                            </Link>
+                        </h2>
                         <p>Posted: {node.frontmatter.date}</p>
                         <p>{node.excerpt}</p>
                     </article>
