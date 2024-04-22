@@ -37,22 +37,22 @@ function logKeystroke(event) {
   }
   console.log(l, l.length)
 }
-
-  document.addEventListener('keydown', logKeystroke);
-
+  
   return (
-    <Layout pageTitle="Home" id="layout">
-      <p>Hi, my name is David Francis. Welcome to my slice of the internet. Try typing in the Konami code for a special surprise.</p>
-      <p>I'm currently building the world's best work tech research business, you can learn more about that <a href="www.talenttechlabs.com">here</a>. </p>
-      <p id="output"></p>
-      
-      {isVisible && (
-        <StaticImage 
-          alt="David, in a suit and tie taking a picture in the mirror"
-          src="../images/david.jpeg"
-          id="secret-image"
-          />)}
-    </Layout>
+    <div onKeyDown={logKeystroke}>
+      <Layout pageTitle="Home" id="layout"  >
+        <p>Hi, my name is David Francis. Welcome to my slice of the internet. Try typing in the Konami code for a special surprise.</p>
+        <p>I'm currently building the world's best work tech research business, you can learn more about that <a href="www.talenttechlabs.com">here</a>. </p>
+        
+        {isVisible && (
+          <StaticImage 
+            alt="David, in a suit and tie taking a picture in the mirror"
+            src="../images/david.jpeg"
+            id="secret-image"
+            />)}
+      </Layout>
+    </div>
+
   )
 }
 
