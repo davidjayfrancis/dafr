@@ -2,15 +2,56 @@ import * as React from "react"
 import Layout from "../components/layout"
 import { StaticImage } from 'gatsby-plugin-image'
 import Seo from "../components/seo"
+import { useState} from "react"
+
+// use this to store keystrokes so we can check against a cypher (the 'Konami code')
+let l = [];
+// hides the image
 
 const IndexPage = () => {
-  return (
-    <Layout pageTitle="Home">
-      <p>Welcome to my slice of the internet.</p>
-      <StaticImage 
-        alt="David, in a suit and tie taking a picture in the mirror"
-        src="../images/david.jpeg" />
+  const [isVisible, setIsVisible] = useState(false);
 
+// This is the Konami code
+const cypher = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+// Track keystrokes 
+function logKeystroke(event) {
+
+  // Checks the current list against the cypher
+  if (l.every(item => cypher.includes(item)) && cypher.every(item => l.includes(item))) {
+    setIsVisible(true);
+  } 
+  // cypher is less than ten so just add the keystroke
+  if (l.length <10) {
+    l.push(event.key);
+    if (l.every(item => cypher.includes(item)) && cypher.every(item => l.includes(item))) {
+      setIsVisible(true);
+    } 
+  } else {
+    // get rid of first element and push event.key to last element, check again
+    l.shift();
+    l.push(event.key)
+    if (l.every(item => cypher.includes(item)) && cypher.every(item => l.includes(item))) {
+      setIsVisible(true);
+    } 
+  }
+  console.log(l, l.length)
+}
+
+  document.addEventListener('keydown', logKeystroke);
+
+  return (
+    <Layout pageTitle="Home" id="layout">
+      <p>Hi, my name is David Francis. Welcome to my slice of the internet. Try typing in the Konami code for a special surprise.</p>
+      <p>I'm currently building the world's best work tech research business, you can learn more about that <a href="www.talenttechlabs.com">here</a>. </p>
+      <p id="output"></p>
+      
+      {isVisible && (
+        <StaticImage 
+          alt="David, in a suit and tie taking a picture in the mirror"
+          src="../images/david.jpeg"
+          id="secret-image"
+          />)}
     </Layout>
   )
 }
