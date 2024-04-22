@@ -3,7 +3,8 @@ import Layout from "../components/layout"
 import { StaticImage } from 'gatsby-plugin-image'
 import Seo from "../components/seo"
 import { useState} from "react"
-
+import { useEffect } from 'react'
+ 
 // use this to store keystrokes so we can check against a cypher (the 'Konami code')
 let l = [];
 // hides the image
@@ -35,23 +36,32 @@ function logKeystroke(event) {
       setIsVisible(true);
     } 
   }
-  console.log(l, l.length)
 }
+
+  useEffect(() => {
+    document.addEventListener('keydown', logKeystroke);
+    return () => {
+      document.removeEventListener('keydown', logKeystroke);
+    };
+  }, [logKeystroke]);
   
   return (
-    <div onKeyDown={logKeystroke}>
+
       <Layout pageTitle="Home" id="layout"  >
         <p>Hi, my name is David Francis. Welcome to my slice of the internet. Try typing in the Konami code for a special surprise.</p>
         <p>I'm currently building the world's best work tech research business, you can learn more about that <a href="www.talenttechlabs.com">here</a>. </p>
         
         {isVisible && (
-          <StaticImage 
+          <>
+            <p>Congrats! You unlocked this incredible picture. (Took it after I bought the hat, which I later lost getting mugged).</p>
+            <StaticImage 
             alt="David, in a suit and tie taking a picture in the mirror"
             src="../images/david.jpeg"
             id="secret-image"
-            />)}
+            />
+          </>
+)}
       </Layout>
-    </div>
 
   )
 }
