@@ -53,7 +53,7 @@ function logKeystroke(event) {
         
         {isVisible && (
           <>
-            <p>Congrats! You unlocked this incredible picture. (Took it after I bought the hat, which I later lost getting mugged).</p>
+            <p>Congrats! You unlocked this incredible picture. (Took it after I bought the hat, which I later lost getting mugged -- a story for another day).</p>
             <StaticImage 
             alt="David, in a suit and tie taking a picture in the mirror"
             src="../images/david.jpeg"
