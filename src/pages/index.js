@@ -48,8 +48,8 @@ function logKeystroke(event) {
   return (
 
       <Layout pageTitle="Home" id="layout"  >
-        <p>Hi, my name is David Francis. Welcome to my slice of the internet. Try typing in the Konami code for a special surprise.</p>
-        <p>I'm currently building the world's best work tech research business, you can learn more about that <a href="www.talenttechlabs.com">here</a>. </p>
+        <p>My name is David Francis. Welcome to my slice of the internet.</p>
+        <p>I'm currently building the world's best work tech research business, you can learn more about that <a href="https://www.talenttechlabs.com">here</a>. </p>
         
         {isVisible && (
           <>
